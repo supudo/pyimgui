@@ -11,7 +11,6 @@ usage guide
    window-flags
    treenode-flags
    selectable-flag
-   inputtext-flags
 
 .. visual-example::
     :title: Guide - hello world!
