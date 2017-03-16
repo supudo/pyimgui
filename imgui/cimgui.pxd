@@ -375,7 +375,7 @@ cdef extern from "imgui.h" namespace "ImGui":
     # Parameters stacks (shared)
     void PushFont(ImFont*)  # ✗
     void PopFont()  # ✗
-    void PushStyleColor(ImGuiCol, const ImVec4&)  # ✗
+    void PushStyleColor(ImGuiCol, const ImVec4&)  # ✓
     void PopStyleColor(int)  # ✗
     void PushStyleVar(ImGuiStyleVar, float) except +  # ✓
     void PushStyleVar(ImGuiStyleVar, const ImVec2&) except +  # ✓
@@ -385,6 +385,18 @@ cdef extern from "imgui.h" namespace "ImGui":
     ImVec2 GetFontTexUvWhitePixel()  # ✗
     ImU32 GetColorU32(ImGuiCol, float)  # ✗
     ImU32 GetColorU32(const ImVec4& col)  # ✗
+
+    # ====
+    # Parameters stacks (current window)
+    void PushItemWidth(float item_width)  # ✓
+    void PopItemWidth()  # ✓
+    float CalcItemWidth()  # ✓
+    void PushTextWrapPos(float wrap_pos_x)  # ✓
+    void PopTextWrapPos()  # ✓
+    void PushAllowKeyboardFocus(bool v)  # ✗
+    void PopAllowKeyboardFocus()  # ✗
+    void PushButtonRepeat(bool repeat)  # ✗
+    void PopButtonRepeat()  # ✗
 
     # ====
     # Cursor / Layout
@@ -966,45 +978,45 @@ cdef extern from "imgui.h" namespace "ImGui":
     void ColorConvertHSVtoRGB(float h, float s, float v, float& out_r, float& out_g, float& out_b)  # ✗
 
     # Inputs
-    int GetKeyIndex(ImGuiKey key)  # ✗
-    bool IsKeyDown(int key_index)  # ✗
-    bool IsKeyPressed(  # ✗
+    int GetKeyIndex(ImGuiKey key)  # ✓
+    bool IsKeyDown(int key_index)  # ✓
+    bool IsKeyPressed(  # ✓
             int key_index,
             # note: optional
             bool repeat
     )
-    bool IsKeyReleased(int key_index)  # ✗
-    bool IsMouseDown(int button)  # ✗
-    bool IsMouseClicked(  # ✗
+    bool IsKeyReleased(int key_index)  # ✓
+    bool IsMouseDown(int button)  # ✓
+    bool IsMouseClicked(  # ✓
             int button,
             # note: optional
             bool repeat
     )
-    bool IsMouseDoubleClicked(int button)  # ✗
-    bool IsMouseReleased(int button)  # ✗
-    bool IsMouseHoveringWindow()  # ✗
-    bool IsMouseHoveringAnyWindow()  # ✗
-    bool IsMouseHoveringRect(  # ✗
+    bool IsMouseDoubleClicked(int button)  # ✓
+    bool IsMouseReleased(int button)  # ✓
+    bool IsMouseHoveringWindow()  # ✓
+    bool IsMouseHoveringAnyWindow()  # ✓
+    bool IsMouseHoveringRect(  # ✓
             const ImVec2& r_min, const ImVec2& r_max,
             # note: optional
             bool clip
     )
-    bool IsMouseDragging(  # ✗
+    bool IsMouseDragging(  # ✓
             # note: optional
             int button, float lock_threshold
     )
-    ImVec2 GetMousePos()  # ✗
+    ImVec2 GetMousePos()  # ✓
     ImVec2 GetMousePosOnOpeningCurrentPopup()  # ✗
-    ImVec2 GetMouseDragDelta(  # ✗
+    ImVec2 GetMouseDragDelta(  # ✓
             # note: optional
             int button, float lock_threshold
     )
-    void ResetMouseDragDelta(  # ✗
+    void ResetMouseDragDelta(  # ✓
             # note: optional
             int button
     )
-    ImGuiMouseCursor GetMouseCursor()  # ✗
-    void SetMouseCursor(ImGuiMouseCursor type)  # ✗
+    ImGuiMouseCursor GetMouseCursor()  # ✓
+    void SetMouseCursor(ImGuiMouseCursor type)  # ✓
     void CaptureKeyboardFromApp(  # ✗
             # note: optional
             bool capture

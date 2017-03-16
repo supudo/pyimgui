@@ -83,6 +83,14 @@ cdef extern from "imgui.h":
         ImGuiStyleVar_ButtonTextAlign     # flags ImGuiAlign_*
         ImGuiStyleVar_Count_
 
+    ctypedef enum ImGuiAlign_:
+        ImGuiAlign_Left
+        ImGuiAlign_Center
+        ImGuiAlign_Right
+        ImGuiAlign_Top
+        ImGuiAlign_VCenter
+        ImGuiAlign_Default
+
     ctypedef enum ImGuiSetCond_:
         ImGuiSetCond_Always               # Set the variable
         ImGuiSetCond_Once                 # Only set the variable on the first call per runtime session
@@ -125,6 +133,16 @@ cdef extern from "imgui.h":
         ImGuiSelectableFlags_DontClosePopups    # Clicking this don't close parent popup window
         ImGuiSelectableFlags_SpanAllColumns     # Selectable frame can span all columns (text will still fit in current column)
         ImGuiSelectableFlags_AllowDoubleClick   # Generate press events on double clicks too
+
+    ctypedef enum ImGuiMouseCursor_:
+        ImGuiMouseCursor_Arrow
+        ImGuiMouseCursor_TextInput              # When hovering over InputText, etc.
+        ImGuiMouseCursor_Move                   # Unused
+        ImGuiMouseCursor_ResizeNS               # Unused
+        ImGuiMouseCursor_ResizeEW               # When hovering over a column
+        ImGuiMouseCursor_ResizeNESW             # Unused
+        ImGuiMouseCursor_ResizeNWSE             # When hovering over the bottom-right corner of a window
+        ImGuiMouseCursor_Count_
 
     ctypedef enum ImGuiInputTextFlags_:
         ImGuiInputTextFlags_CharsDecimal        # Allow 0123456789.+-*/
